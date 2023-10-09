@@ -28,12 +28,6 @@ int main(int argc, const char * argv[])
     if (function_result == fsc_ok)
     {
         char bytes_list[] = {3,1,4,1,5,9,2,6,5,3,5};
-        /*int i = 0;
-        while (bytes_list[i] != 0)
-        {
-            printf("%c\n", bytes_list[i] + '0');
-            ++i;
-        }*/
         
         fwrite(bytes_list, sizeof(char), sizeof(bytes_list), file_input);
         fclose(file_input);
