@@ -62,7 +62,7 @@ int main(int argc, const char * argv[])
                 {
                     unsigned int c;
                     unsigned int res = 0;
-                    while(fread(&c, sizeof(unsigned int), 1, file_input))
+                    while(fread(&c, sizeof(char), 4, file_input))
                     {
                         res ^= c;
                         c = 0;
@@ -80,7 +80,7 @@ int main(int argc, const char * argv[])
                         unsigned int value;
                         mask = (unsigned int)strtol(argv[2], NULL, 16);
                         int col = 0;
-                        while(fread(&value, sizeof(unsigned int), 1, file_input))
+                        while(fread(&value, sizeof(char), 4, file_input))
                         {
                             if ((mask & value) == mask)
                                 ++col;
