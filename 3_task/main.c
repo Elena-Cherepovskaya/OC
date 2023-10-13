@@ -42,13 +42,11 @@ int main(int argc, const char * argv[])
             else
             {
                 char buffer[MAX_SIZE_OF_BUFFER];
-                while (true)
+                unsigned long col_of_read_correctly = MAX_SIZE_OF_BUFFER;
+                while (col_of_read_correctly != 0)
                 {
-                    unsigned long col_of_read_correctly = fread(buffer, sizeof(char), MAX_SIZE_OF_BUFFER, file_input);
-                    if (col_of_read_correctly == 0)
-                        break;
-                    else
-                        fwrite(buffer, sizeof(char), col_of_read_correctly, file_output);
+                    fread(buffer, sizeof(char), MAX_SIZE_OF_BUFFER, file_input);
+                    fwrite(buffer, sizeof(char), col_of_read_correctly, file_output);
                 }
                 fclose(file_input);
                 fclose(file_output);
