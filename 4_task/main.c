@@ -9,6 +9,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 enum status_codes
 {
@@ -51,18 +52,18 @@ int main(int argc, const char * argv[])
             {
                 case 0:
                 {
-                    char c;
-                    char res = 0;
-                    while (fread(&c, sizeof(char), 1, file_input))
+                    uint8_t c;
+                    uint8_t res = 0;
+                    while (fread(&c, sizeof(c), 1, file_input))
                         res ^= c;
                     printf("%d\n", res);
                     break;
                 }
                 case 1:
                 {
-                    unsigned int c;
-                    unsigned int res = 0;
-                    while(fread(&c, sizeof(char), 4, file_input))
+                    uint32_t c;
+                    uint32_t res = 0;
+                    while(fread(&c, sizeof(c), 1, file_input))
                     {
                         res ^= c;
                         c = 0;
@@ -76,11 +77,11 @@ int main(int argc, const char * argv[])
                         function_result = fsc_invalid_parameter;
                     else
                     {
-                        unsigned int mask;
-                        unsigned int value;
+                        uint32_t mask;
+                        uint32_t value;
                         mask = (unsigned int)strtol(argv[2], NULL, 16);
                         int col = 0;
-                        while(fread(&value, sizeof(char), 4, file_input))
+                        while(fread(&value, sizeof(value), 1, file_input))
                         {
                             if ((mask & value) == mask)
                                 ++col;
